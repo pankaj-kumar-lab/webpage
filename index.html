@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Pankaj Kumar-Lab</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --primary-color: rgba(38, 34, 98, 1);
+      --nav-bg: #e6f0ff;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f0f8ff;
+      color: #333;
+    }
+    .card { border: none; }
+
+    .navbar {
+      background-color: var(--nav-bg);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .brand-text {
+      color: var(--primary-color);
+      font-weight: 600;
+      font-size: clamp(1rem,4vw,1.75rem);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .vertical-divider {
+      width: 1px;
+      background-color: var(--primary-color);
+      height: clamp(25px,3vw,40px);
+      margin: 0 0.75rem;
+      flex-shrink: 0;
+    }
+    .navbar-brand-logo {
+      height: clamp(30px,6vw,50px);
+      flex-shrink: 0;
+    }
+    .nav-link {
+      color: #333 !important;
+      font-weight: 400 !important;
+      white-space: nowrap;
+    }
+    .nav-link.active {
+      color: var(--primary-color) !important;
+      border-bottom: 2px solid var(--primary-color);
+    }
+
+    #bioCarousel .ratio-21x9 { --bs-aspect-ratio: 39.8571428571%; }
+    #bioCarousel .ratio img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+
+    }
+
+    .section-sep {
+      border: 0;
+      border-top: 1px solid #484747;
+      margin: 2rem 0;
+    }
+
+    h4 { color: var(--primary-color); }
+
+    .update-row {
+      display: flex;
+      flex-direction: column;
+      border-left: 4px solid var(--primary-color);
+      background-color: rgba(38,34,98,0.05);
+      padding: 0.75rem 1rem;
+      border-radius: 0.25rem;
+      margin-bottom: 1rem;
+    }
+    @media (min-width: 768px) {
+      .update-row {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+      .update-row .month-year {
+        margin-right: 1rem;
+      }
+    }
+    .month-year {
+      color: var(--primary-color);
+      font-weight: 600;
+      white-space: nowrap;
+      margin-bottom: 0.5rem;
+    }
+    @media (min-width: 992px) {
+  /* space between links */
+  #mainNavbar .navbar-nav { gap: .25rem; }
+
+  /* pipe separator after each link except the last */
+  #mainNavbar .nav-item:not(:last-child) .nav-link {
+    position: relative;
+    padding-right: 1rem;   /* room for the pipe */
+    margin-right: .5rem;
+  }
+  #mainNavbar .nav-item:not(:last-child) .nav-link::after {
+    content: "|";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: .4;           /* soften the pipe */
+    pointer-events: none;
+  }
+}
+    #toggleUpdates { font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+  <div class="container my-5">
+    <div class="card shadow-sm rounded">
+
+      <nav class="navbar navbar-expand-xl">
+        <div class="container">
+          <div class="d-flex align-items-center">
+            <span class="brand-text">Bioinformatics Core</span>
+            <div class="vertical-divider"></div>
+            <img
+              src="public/uva_primary_rgb.png"
+              alt="UVA Logo"
+              class="navbar-brand-logo"
+            />
+          </div>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+            <ul class="navbar-nav flex-nowrap">
+              <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+              <!-- <li class="nav-item"><a class="nav-link" href="about.html">About</a></li> -->
+              <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+              <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+              <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="card-body px-4 py-3">
+        <h3 class="text-center mb-4" style="color: var(--primary-color);">
+          Welcome to Bioinformatics Core
+        </h3>
+
+        <div id="bioCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="ratio ratio-21x9">
+                <img src="public/Attaway23-25-1-scaled-e1680545363270-1920x573.jpg" alt="Slide 1">
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="ratio ratio-21x9">
+                <img src="public/claude-moore.jpg" alt="Slide 2">
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="ratio ratio-21x9">
+                <img src="public/uva-hospital.jpg" alt="Slide 3">
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#bioCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#bioCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+
+        <hr class="section-sep" />
+
+        <h4 style="color:var(--primary-color)">We brew data</h4>
+        <p class="mb-4">
+          The Bioinformatics Core is headed by a scientifically accomplished leader in the field of Bioinformatics and genomics and provides Bioinformatics consultation services supported by well trained staff (Masters’ and Ph.D. level) in Computational Biology. We take pride in saying that we support any “Biomedical Data” analysis one can think of. Our goal is to foster a close scientific collaboration and provide our collaborators with an exceptional computational analysis service as a fee-for-service. To ensure reproducible research we share all the analysis steps and computer code as R or Jupiter notebooks and save it in a password protected project page that can be assessed by our collaborators. Our turnaround time is less than a week for most of the recurring analysis requests. Bioinformatics consultation is provided on a first come first basis.
+        </p>
+
+        <!-- <hr class="section-sep" /> -->
+
+        <!-- <h2 class="h5 mb-3" style="color: var(--primary-color);">Monthly Updates</h2>
+        <div id="updatesList">
+          <div class="update-row">
+            <div class="month-year">July 2025</div>
+            <ul class="mb-0 flex-fill">
+              <li>Launched new research project on AI-driven analysis.</li>
+              <li>Published paper in Journal of Advanced Studies.</li>
+              <li>Hosted webinar on deep learning applications.</li>
+            </ul>
+          </div>
+          <div class="update-row">
+            <div class="month-year">June 2025</div>
+            <ul class="mb-0 flex-fill">
+              <li>Completed data collection for study on bioinformatics.</li>
+              <li>Presented findings at International Conference.</li>
+              <li>Upgraded website with new resources section.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="collapse" id="moreUpdates">
+          <div class="update-row">
+            <div class="month-year">May 2025</div>
+            <ul class="mb-0 flex-fill">
+              <li>Example older update #1</li>
+              <li>Example older update #2</li>
+            </ul>
+          </div>
+        </div>
+
+        <a
+          class="btn btn-link p-0"
+          data-bs-toggle="collapse"
+          href="#moreUpdates"
+          role="button"
+          aria-expanded="false"
+          aria-controls="moreUpdates"
+          id="toggleUpdates"
+        >
+          Show previous updates
+        </a> -->
+
+
+        <hr class="section-sep mt-4" />
+        <h4 style="color:var(--primary-color)">Mission</h4>
+        <p>
+            The Bioinformatics Core at UVA serves as a centralized resource for providing expert and timely bioinformatics consulting and data analysis solutions. The core offers services to investigators within and outside of UVA for the management and analysis of biological datasets produced by high-throughput omics experiments. 
+            <!-- <strong>The Bioinformatics Core is located on the first floor in Pinn Hall (Room # 1312)</strong>.  -->
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const toggleLink = document.getElementById('toggleUpdates');
+    const more = document.getElementById('moreUpdates');
+    more.addEventListener('show.bs.collapse', () => toggleLink.textContent = 'Hide previous updates');
+    more.addEventListener('hide.bs.collapse', () => toggleLink.textContent = 'Show previous updates');
+  </script>
+</body>
+</html>
