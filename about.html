@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Pankaj Kumar-Lab About</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary-color: rgba(38,34,98,1);
+      --nav-bg: #e6f0ff;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f0f8ff;
+      color: #333;
+    }
+    .card { border:none; }
+
+    .navbar {
+      background: var(--nav-bg);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .brand-text {
+      color: var(--primary-color);
+      font-weight:600;
+      font-size: clamp(1rem,4vw,1.75rem);
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .vertical-divider {
+      width:1px; background: var(--primary-color);
+      height: clamp(25px,3vw,40px);
+      margin:0 .75rem; flex-shrink:0;
+    }
+    .navbar-brand-logo {
+      height: clamp(30px,6vw,50px);
+      flex-shrink:0;
+    }
+    .nav-link {
+      color:#333 !important; font-weight:400 !important;
+      white-space: nowrap;
+    }
+    .nav-link.active {
+      color: var(--primary-color) !important;
+      border-bottom:2px solid var(--primary-color);
+    }
+
+    .page-title {
+      color: var(--primary-color);
+      text-align: left;
+      margin: 1.5rem 0 0.5rem 0;
+    }
+    .section-sep {
+      border:0; border-top:1px solid #484747;
+      margin:1.5rem 0;
+    }
+
+    .accordion-item {
+      border:none;
+      border-left:4px solid transparent;
+      border-radius:.5rem;
+      overflow:hidden;
+      margin-bottom:1rem;
+      transition:border-color .3s;
+    }
+    .accordion-item.active {
+      border-left-color: var(--primary-color);
+    }
+    .accordion-button {
+      position:relative;
+      padding-left:2.5rem;
+      background-color:rgba(38,34,98,0.1);
+      color:var(--primary-color);
+      font-weight:600;
+    }
+    .accordion-button::after { display:none; }
+    .accordion-button::before {
+      content:"\f078";
+      font-family:"Font Awesome 6 Free";
+      font-weight:900;
+      position:absolute; left:1rem; top:50%;
+      transform:translateY(-50%);
+      font-size:.75rem;
+      color:var(--primary-color);
+      transition:transform .3s;
+    }
+    .accordion-button:not(.collapsed) {
+      background-color:rgba(38,34,98,0.2);
+    }
+    .accordion-button:not(.collapsed)::before {
+      content:"\f077";
+    }
+    .accordion-body {
+      background:#fff; color:#333;
+    }
+
+.flip-card {
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  display: grid;
+  grid-template-areas: "stack";
+  width: 100%;
+  transition: transform .6s ease;
+  transform-style: preserve-3d;
+  min-height: var(--funding-front-max, 0px);
+}
+
+.flip-card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  grid-area: stack;
+  backface-visibility: hidden;
+  border-radius: .5rem;
+  box-sizing: border-box;
+  padding: 1rem;
+  overflow-wrap: break-word;
+  height: 100%;
+}
+
+.flip-card-front {
+  background: rgba(38,34,98,0.1);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100px; 
+}
+
+.flip-card-back {
+  background: #fff;
+  color: #333;
+  border-left: 4px solid var(--primary-color);
+  transform: rotateY(180deg);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 200px;
+}
+@media (min-width: 992px) {
+  /* space between links */
+  #mainNavbar .navbar-nav { gap: .25rem; }
+
+  /* pipe separator after each link except the last */
+  #mainNavbar .nav-item:not(:last-child) .nav-link {
+    position: relative;
+    padding-right: 1rem;   /* room for the pipe */
+    margin-right: .5rem;
+  }
+  #mainNavbar .nav-item:not(:last-child) .nav-link::after {
+    content: "|";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: .4;           /* soften the pipe */
+    pointer-events: none;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="container my-5">
+    <div class="card shadow-sm rounded">
+
+      <nav class="navbar navbar-expand-xl">
+        <div class="container">
+          <div class="d-flex align-items-center">
+            <span class="brand-text">Bioinformatics Core</span>
+            <div class="vertical-divider"></div>
+            <img src="public/uva_primary_rgb.png" alt="UVA Logo" class="navbar-brand-logo"/>
+          </div>
+          <button class="navbar-toggler" type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#mainNavbar"
+                  aria-controls="mainNavbar"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+            <ul class="navbar-nav flex-nowrap">
+              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+              <!-- <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li> -->
+              <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+              <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+              <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <h2 class="page-title px-4">About</h2>
+
+      <div class="card-body px-4 py-3">
+
+                 <hr class="section-sep"/>
+
+        <h4 style="color:var(--primary-color)">Mission</h4>
+        <p>
+            The Bioinformatics Core at UVA serves as a centralized resource for providing expert and timely bioinformatics consulting and data analysis solutions. The core offers services to investigators within and outside of UVA for the management and analysis of biological datasets produced by high-throughput omics experiments. <strong>The Bioinformatics Core is located on the first floor in Pinn Hall (Room # 1312)</strong>. 
+        </p>
+        <hr class="section-sep"/>
+
+        <h4 style="color:var(--primary-color)">Goals</h4>
+        <hr class="section-sep"/>
+        <div class="accordion" id="goalsAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="goalOne">
+              <button class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseGoalOne"
+                      aria-expanded="false"
+                      aria-controls="collapseGoalOne">
+                1. Provide analytical support for research using high-throughput biological data
+              </button>
+            </h2>
+            <div id="collapseGoalOne"
+                 class="accordion-collapse collapse"
+                 aria-labelledby="goalOne"
+                 >
+              <div class="accordion-body">
+                The Core’s primary goal is to identify opportunities and implement solutions for managing, visualizing, analyzing, and interpreting genomic data, including studies of gene expression (RNA-seq and microarrays), pathway analysis, protein-DNA binding (e.g. ChIP-seq), DNA methylation, and DNA variation, using high-throughput platforms in both human and model organisms. We will establish best practices for high-throughput data analysis in a production environment, and develop custom solutions to assist research with data analysis and biological interpretation. The core will serve as a central point of contact and venue for collaboration with bioinformatics and computational biology specialists.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="goalTwo">
+              <button class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseGoalTwo"
+                      aria-expanded="false"
+                      aria-controls="collapseGoalTwo">
+                2. Provide outreach and bioinformatics training to the UVA community
+              </button>
+            </h2>
+            <div id="collapseGoalTwo"
+                 class="accordion-collapse collapse"
+                 aria-labelledby="goalTwo"
+                 >
+              <div class="accordion-body">
+                It is important that a rapport and dialogue is established between biomedical researchers and the bioinformaticians and computational biologists with whom they collaborate. The core will advertise services as they become available and work with investigators to establish new data analysis pipelines. The core will give informational seminars on supported analysis routines, and will host training series and workshops on commonly used bioinformatics tools, resources, and databases.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="goalThree">
+              <button class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseGoalThree"
+                      aria-expanded="false"
+                      aria-controls="collapseGoalThree">
+                3. Devlop a unified information systems infrastructure at UVA
+              </button>
+            </h2>
+            <div id="collapseGoalThree"
+                 class="accordion-collapse collapse"
+                 aria-labelledby="goalThree"
+                 >
+              <div class="accordion-body">
+                To be successful, UVA must establish an integrated research information management infrastructure that spans bioinformatics, clinical research informatics, information retrieval (libraries), research administration/management systems, and healthcare delivery systems. The UVA Bioinformatics Core is uniquely positioned to develop a tripartite partnership with the Health Sciences Library and the Division of Biomedical Informatics to highlight the need for an integrated research informatics plan and define a process to create it.
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="section-sep"/>
+
+    <h4 class="page-title">Funding Models</h4>
+    <hr class="section-sep"/>
+    <div class="row g-4">
+        <div class="col-md-4 col-12">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        Free-For-Service Consulting Arrangements
+                    </div>
+                    <div class="flip-card-back">
+                        We offer a hourly fee-for-service for all bioinformatics analysis services. Downstream analysis, custom solution development, and extraction of biological meaning from experimental results, where it is often difficult for both investigators and bioinformaticians to place a fixed time/cost on certain open-ended questions (e.g., “Which results are statistically significant?”, “What statistical tests should I be using?”, “What genes or pathways are affected by these variants?”, “Can you make a story about these genes/pathways for the disease I am studying?”, “Can you make a figure and write part of the methods and discussion sections for my paper or grant application?”, etc.). The Core places a high value on transparency: we attempt to provide accurate effort forecasting precise time-tracking for effort reporting.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-12">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        Departmental “Retainer” Model
+                    </div>
+                    <div class="flip-card-back">
+                        <ul>
+                            <li>Another UVA entity (department, division, or center) purchases a certain number of core hours.</li>
+                            <li>That Bioinformatics Core faculty/staff member establishes ongoing relationships with faculty in that entity, providing consulting and analytical support services as needed, up to the number of hours that the entity is funding the core.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-12">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        Core Resource Affiliate
+                    </div>
+                    <div class="flip-card-back">
+                        For most services, costs of purchasing and maintaining core resources (e.g., data storage, computing infrastructure, commercial software licensing) are included with services provided under one of the models listed above. If investigators need direct access to expensive core resources without procuring core personnel time (e.g., long term data storage, access to software the core doesn’t license, access to core computing resources, etc.), the core will work with the investigators to implement a solution for sharing costs of these resources.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <hr class="section-sep"/>
+
+        <h4 style="color:var(--primary-color)">Authorship</h4>
+        <hr class="section-sep"/>
+        <p>A frequently asked question is whether research methodology consultants should be co-authors on scientific papers.<strong><em>Decisions about authorship should be independent of consideration of funding sources</em></strong>. As recommended in published guidelines <a href="https://pubmed.ncbi.nlm.nih.gov/9819828/">(Parker & Berman: Criteria for authorship for statisticians in medical papers. Statistics in Medicine 17: 2289-2299)</a>, “The basis of financial support should be the time/effort spent on a project and the basis for authorship should be whether [the consultant] has made a scientific contribution to the project.” Also, note that, if appropriate, it is often beneficial to include bioinformaticians as authors in publications since those are considered as the most critical evidence of long-term bioinformatics collaborations in most current grant funding reviews.</p>
+        <hr class="section-sep"/>
+
+        <h4 style="color:var(--primary-color)">Examples of Scientific Contributions</h4>
+            <hr class="section-sep"/>
+        <ol class="mb-3">
+          <li>The core bioinformatician develops new methods to meet the project’s needs, or she/he combines existing techniques in a novel way.</li>
+          <li>The core bioinformatician has a major role in designing the study.</li>
+          <li>The core bioinformatician writes part of the manuscript other than a standard paragraph or two describing which methods were used.</li>
+          <li>The core bioinformatician is asked to critique an initial draft and spends a considerable amount of time suggesting alternative wording and presentation of results.</li>
+          <li>The core bioinformatician provides data analysis along with biological interpretation of results.</li>
+        </ol>
+        <p>
+          By JAMA’s criteria for authorship for statistical experts involved in data analysis and interpretation, an analytical consultant is a co-author if (1) he/she took part in the drafting of the manuscript or (2) he/she was involved in a critical revision of the manuscript for important intellectual content.
+        </p>
+        <p>
+         Above all, it is important for the researcher and core personnel working on the project to agree on criteria for authorship early in their collaboration.
+        </p>
+        <hr class="section-sep"/>
+
+        <h4 style="color:var(--primary-color)">Data Handling</h4>
+        <hr class="section-sep"/>
+        <p>
+          Unless otherwise specified, all data is stored on networked storage drives with cross-building replication (all data are periodically copied to a second storage server located in a different building from the primary file server to provide fault-tolerant storage in two different locations). All data housed by the UVA Bioinformatics Core may be subject to deletion after long periods (e.g. months) of inactivity, if no future Bioinformatics Core services are needed in the foreseeable future. Every attempt will be made to contact and warn clients before any data is deleted. Data can be transferred over the web or via external hard drives. Hard drives can either be purchased from the core or shipped to us by the client. Data will be copied to one location (hard drive or web server) as part of the service cost.
+        </p>
+        <hr class="section-sep"/>
+
+        <h4 style="color:var(--primary-color)">Terms and Conditions</h4>
+        <hr class="section-sep"/>
+        <div class="accordion" id="termsAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="termOne">
+              <button class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTermOne"
+                      aria-expanded="false"
+                      aria-controls="collapseTermOne">
+                Payment
+              </button>
+            </h2>
+            <div id="collapseTermOne"
+                 class="accordion-collapse collapse"
+                 aria-labelledby="termOne"
+                 >
+              <div class="accordion-body">
+                Client agrees to pay for any services in accordance with the agreement. The bioinformatics core requires payment arrangements be made before any services are performed, and for payment to be completed before results are released. Clients outside US must pre-pay for requested services before services are performed. Unless otherwise specified by the UVA Bioinformatics Core, all payments are due and payable within thirty (30) days of the date of the invoice. Payment shall be deemed late if not received within such time and shall be subject to interest equal to 2% per month, together with all costs and expenses (including without limitation reasonable attorneys’ fees and disbursements and court costs) incurred by the UVA Bioinformatics Core in collecting such overdue amounts.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="termTwo">
+              <button class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTermTwo"
+                      aria-expanded="false"
+                      aria-controls="collapseTermTwo">
+                Warranty
+              </button>
+            </h2>
+            <div id="collapseTermTwo"
+                 class="accordion-collapse collapse"
+                 aria-labelledby="termTwo"
+                 >
+              <div class="accordion-body">
+                The UVA Bioinformatics Core agrees to conduct analysis and perform the services agreed upon in accordance with the highest scientific and professional standards. All parties recognize and understand that the core provides services to explore an intellectual question or scientific hypothesis. The Bioinformatics Core makes absolutely no warranties, express or implied, and disclaims all warranties including, but not limited to, implied warranties of merchantability and fitness for a particular purpose. The client’s exclusive remedy is, at the UVA Bioinformatics Core’s sole option, a credit for, or reperformance of, the services in question. In no event will the UVA Bioinformatics Core be liable for any consequential, incidental, special or indirect damages, including without limitation, damages for loss of profits, business interruption, loss of business information or property damage sustained by client from the use of, or inability to use, any results, even if the UVA Bioinformatics Core has been advised of the possibility of such damages.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="termThree">
+              <button class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTermThree"
+                      aria-expanded="false"
+                      aria-controls="collapseTermThree">
+                Confidentiality
+              </button>
+            </h2>
+            <div id="collapseTermThree"
+                 class="accordion-collapse collapse"
+                 aria-labelledby="termThree"
+                 >
+              <div class="accordion-body">
+                Both parties each agree to maintain in confidence and not disclose to third parties any confidential information that is disclosed to one by the other party. This includes pricing information and all communications.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="termFour">
+              <button class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTermFour"
+                      aria-expanded="false"
+                      aria-controls="collapseTermThree">
+                Data Handling and Intellectual Property
+              </button>
+            </h2>
+            <div id="collapseTermFour"
+                 class="accordion-collapse collapse"
+                 aria-labelledby="termFour"
+                 >
+              <div class="accordion-body">
+                Following settlement of all invoices, all compilations of scientific and technical data produced or prepared by the UVA Bioinformatics Core in the performance of services requested shall be the property of the client and shall be deemed to be works made for hire. Any work resulting from unpaid services and all associated intellectual property shall remain the exclusive property of the UVA Bioinformatics Core. These provisions shall survive any termination or expiration of this Agreement.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+  document.querySelectorAll('.accordion-collapse').forEach(el => {
+    el.addEventListener('show.bs.collapse', () => el.closest('.accordion-item').classList.add('active'));
+    el.addEventListener('hide.bs.collapse', () => el.closest('.accordion-item').classList.remove('active'));
+  });
+
+  document.querySelectorAll('.flip-card-inner').forEach(inner => {
+    inner.parentNode.addEventListener('click', () => {
+      inner.classList.toggle('flipped');
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const fronts = Array.from(document.querySelectorAll('.flip-card-front'));
+    const heights = fronts.map(f=> f.scrollHeight);
+    const maxH = Math.max(...heights, 0);
+
+    document.documentElement.style.setProperty('--funding-front-max', maxH + 'px');
+  });
+</script>
+
+  <!-- <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.flip-card').forEach(card => {
+      const inner = card.querySelector('.flip-card-inner');
+      const front = inner.querySelector('.flip-card-front');
+      const back  = inner.querySelector('.flip-card-back');
+
+      // initialize to front’s height
+      inner.style.height = front.scrollHeight + 'px';
+
+      // toggle flip on click, and animate height
+      card.addEventListener('click', () => {
+        const showingBack = inner.classList.toggle('flipped');
+        inner.style.height = (showingBack 
+          ? back.scrollHeight 
+          : front.scrollHeight
+        ) + 'px';
+      });
+
+      // keep heights in sync on resize
+      window.addEventListener('resize', () => {
+        const showingBack = inner.classList.contains('flipped');
+        inner.style.height = (showingBack 
+          ? back.scrollHeight 
+          : front.scrollHeight
+        ) + 'px';
+      });
+    });
+  });
+</script> -->
+
+
+</body>
+</html>

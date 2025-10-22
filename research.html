@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Pankaj Kumar-lab Research</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary-color: rgba(38,34,98,1);
+      --nav-bg: #e6f0ff;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f0f8ff;
+      color: #333;
+    }
+    .card { border: none; }
+
+    .navbar {
+      background: var(--nav-bg);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .brand-text {
+      color: var(--primary-color);
+      font-weight: 600;
+      font-size: clamp(1rem,4vw,1.75rem);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .vertical-divider {
+      width: 1px;
+      background: var(--primary-color);
+      height: clamp(25px,3vw,40px);
+      margin: 0 .75rem;
+      flex-shrink: 0;
+    }
+    .navbar-brand-logo {
+      height: clamp(30px,6vw,50px);
+      flex-shrink: 0;
+    }
+    .nav-link {
+      color: #333 !important;
+      font-weight: 400 !important;
+      white-space: nowrap;
+    }
+    .nav-link.active {
+      color: var(--primary-color) !important;
+      border-bottom: 2px solid var(--primary-color);
+    }
+
+    .page-title {
+      color: var(--primary-color);
+      text-align: left;
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    .section-sep {
+      border: 0;
+      border-top: 1px solid #484747;
+      margin: 0.5rem 0 2rem;
+    }
+    .col-divider {
+      border-right: 1px solid rgba(0,0,0,0.1);
+    }
+    @media (min-width: 992px) {
+  /* space between links */
+  #mainNavbar .navbar-nav { gap: .25rem; }
+
+  /* pipe separator after each link except the last */
+  #mainNavbar .nav-item:not(:last-child) .nav-link {
+    position: relative;
+    padding-right: 1rem;   /* room for the pipe */
+    margin-right: .5rem;
+  }
+  #mainNavbar .nav-item:not(:last-child) .nav-link::after {
+    content: "|";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: .4;           /* soften the pipe */
+    pointer-events: none;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <div class="container my-5">
+    <div class="card shadow-sm rounded">
+
+      <nav class="navbar navbar-expand-xl">
+        <div class="container">
+          <div class="d-flex align-items-center">
+            <span class="brand-text">Bioinformatics Core</span>
+            <div class="vertical-divider"></div>
+            <img src="public/uva_primary_rgb.png" alt="UVA Logo" class="navbar-brand-logo"/>
+          </div>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+            <ul class="navbar-nav flex-nowrap">
+              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link active" href="research.html">Research</a></li>
+              <!-- <li class="nav-item"><a class="nav-link" href="about.html">About</a></li> -->
+              <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+              <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+              <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <h2 class="page-title px-4">Research</h2>
+        <div class="card-body px-4 py-3">
+
+            <h4 style="color:var(--primary-color)">Research Interests</h4>
+            <hr class="section-sep"/>
+
+            <p>
+               Biogenesis and Function of Transfer RNA-Related Fragments (tRFs); Study of extrachromosomal circular DNA (eccDNA) or double minutes to understand Tumor heterogeneity
+            </p>
+      </div>
+      <div class="card-body px-4 py-3">
+
+            <h4 style="color:var(--primary-color)">Research Description</h4>
+            <hr class="section-sep"/>
+
+            <p>
+                We collaborate with a battery of scientists across grounds whose research interests are varied and span different areas like the microbiome, metagenomics, metabolomics, proteomics, transcriptomics, eQTL analysis, single nucleotide variation, structure variation of the genome, single-cell genomics to understand the heterogeneity between the cells, etc. We have been supporting colleagues and collaborators across the university with bioinformatics analysis, statistical analysis, data interpretation and grant writing (as a Co-I) to fulfill aims that need bioinformatics and statistical expertise.
+            </p>
+            <p>
+                Our laboratory uses computational methods to make novel biological discoveries about the regulation of gene expression in cancers from genomic and transcriptomic data generated by consortia like The Cancer Genome Atlas (TCGA), Encyclopedia of DNA elements (ENCODE), etc. An unbiased approach to analyzing high-throughput small RNA sequencing data resulted in the discovery of a new class of small RNAs called transfer RNA fragments (tRFs). Ongoing projects in the lab examine how tRFs impact on gene expression and cancer.
+            </p>
+      </div>
+      <h3 class="page-title px-4">Research Projects</h2>
+      <div class="card-body px-4 py-3">
+
+            <h4 style="color:var(--primary-color)">Circle_finder</h4>
+            <hr class="section-sep"/>
+
+            <p>
+                Pankaj Kumar was one of the first authors from the group (postdoc lab) that used first paired-end high throughput sequencing methods to identify circular DNA at base-pair resolution. Pankaj Kumar developed one of the first computational methods (<strong>Circle_finder</strong> available at <a href="https://github.com/pk7zuva/Circle_finder" target="_blank">Github</a>), which can identify circular DNA from any type of paired-end high throughput sequencing data. The genome-wide abundance of eccDNAs and their functional importance are not very well understood. These eccDNA sequences are a few hundred kbs to a few megabases in size. My interest is in longer eccDNA as they are expected to harbor full-length gene sequences. Pankaj Kumar has been working on circular DNA for over a decade.
+            </p>
+      </div>
+      <div class="card-body px-4 py-3">
+
+            <h4 style="color:var(--primary-color)">TRFs</h4>
+            <hr class="section-sep"/>
+
+            <p>
+                TRFs are a heterogeneous class of small RNAs, with the most abundant ones classified into groups: tRF-5 arising from 5’ end of mature tRNA, tRF-3 from 3’ end of mature tRNA, tRF-1 arising from 3’ end of primary tRNA and tiRs (tRNA halves) that are generated by cleavage in the anticodon loop. While tRF1 is generated during tRNA maturation by RNase Z, not much is known of the factors responsible for the biogenesis of other tRFs viz. tRF5s, tRF3s and tiRs. Also, the biological function of a vast majority of the tRFs is unknown. Our analysis of the Photoactivatable-Ribonucleoside-Enhanced Crosslinking and Immunoprecipitation (PAR-CLIP) of Argonaute (AGO) protein and cross-linking ligation and sequencing of hybrids (CLASH) data suggest that tRFs bind to Argonaute proteins (AGO) and base pair with target genes in a manner similar to miRNA. . By comparison with microRNAs, another family of small RNAs that bind to AGO proteins and base-pair with target genes, we hypothesize that this will function as tumor suppressors or as oncogenes and be involved in cellular and pathological processes like apoptosis and neurodegeneration. We are also interested to understand the biogenesis and function of this, specifically, its gene-regulatory role in cancer. Finally to help achieve this goal and facilitate research on this we created and maintain a publicly available database of tRFs called tRFdb (<a href="https://genome.bioch.virginia.edu/" target="_blank">https://genome.bioch.virginia.edu/</a>) that lists the sequences of abundant tRFs in different species and potential target genes.
+            </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

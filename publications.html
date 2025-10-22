@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Pankaj Kumar-Lab Publications</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary-color: rgba(38,34,98,1);
+      --nav-bg: #e6f0ff;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f0f8ff;
+      color: #333;
+    }
+    .card { border: none; }
+
+    .navbar {
+      background: var(--nav-bg);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .brand-text {
+      color: var(--primary-color);
+      font-weight:600;
+      font-size: clamp(1rem,4vw,1.75rem);
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .vertical-divider {
+      width:1px; background: var(--primary-color);
+      height: clamp(25px,3vw,40px);
+      margin:0 .75rem; flex-shrink:0;
+    }
+    .navbar-brand-logo {
+      height: clamp(30px,6vw,50px);
+      flex-shrink:0;
+    }
+    .nav-link {
+      color:#333 !important; font-weight:400 !important;
+      white-space: nowrap;
+    }
+    .nav-link.active {
+      color: var(--primary-color) !important;
+      border-bottom:2px solid var(--primary-color);
+    }
+
+    .page-title {
+      color: var(--primary-color);
+      text-align: left;
+      margin: 1.5rem 0 0.5rem 0;
+    }
+
+    .section-sep {
+      border: 0;
+      border-top: 1px solid #484747;
+      margin: 0.5rem 0 2rem 0;
+    }
+
+    .publications-list,
+    .pub-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem 0;
+    }
+    .publications-list li,
+    .pub-list li {
+      position: relative;
+      padding-left: 1.25rem;
+      margin-bottom: .75rem;
+      line-height: 1.4;
+    }
+    .publications-list li::before,
+    .pub-list li::before {
+      content: "\f105"; 
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 0.15em;
+      color: #888;
+    }
+
+    .pub-title {
+      font-size: 1.25rem;
+      color: var(--primary-color);
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      margin-bottom: .75rem;
+    }
+    .pub-title i {
+      margin-left: .5rem;
+      transition: transform .3s;
+    }
+    .pub-title.collapsed i { transform: rotate(0deg); }
+    .pub-title:not(.collapsed) i { transform: rotate(180deg); }
+    @media (min-width: 992px) {
+  /* space between links */
+  #mainNavbar .navbar-nav { gap: .25rem; }
+
+  /* pipe separator after each link except the last */
+  #mainNavbar .nav-item:not(:last-child) .nav-link {
+    position: relative;
+    padding-right: 1rem;   /* room for the pipe */
+    margin-right: .5rem;
+  }
+  #mainNavbar .nav-item:not(:last-child) .nav-link::after {
+    content: "|";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: .4;           /* soften the pipe */
+    pointer-events: none;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <div class="container my-5">
+    <div class="card shadow-sm rounded">
+
+      <nav class="navbar navbar-expand-xl">
+        <div class="container">
+          <div class="d-flex align-items-center">
+            <span class="brand-text">Bioinformatics Core</span>
+            <div class="vertical-divider"></div>
+            <img src="public/uva_primary_rgb.png" alt="UVA Logo" class="navbar-brand-logo"/>
+          </div>
+          <button class="navbar-toggler" type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#mainNavbar"
+                  aria-controls="mainNavbar"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+            <ul class="navbar-nav flex-nowrap">
+              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+              <!-- <li class="nav-item"><a class="nav-link" href="about.html">About</a></li> -->
+              <li class="nav-item"><a class="nav-link active" href="publications.html">Publications</a></li>
+              <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+              <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <h2 class="page-title px-4">Publications</h2>
+
+      <div class="card-body px-4 py-3">
+
+        <ul class="publications-list">
+          <li>Max O Meneveau, Rick D Vavolizza, Anwaruddin Mohammad, Pankaj Kumar, Joseph T Manderfield, Colleen Callahan, Kevin T Lynch, Tarek Abbas, Craig L Slingluff Jr, Stefan Bekiranov. A Step Toward Personalized Surgical Decision Making: Machine Learning Predicts One Versus Numerous Melanoma Lymph Node Metastases Using RNA-Sequencing. Annals of Surgery, 2022.</li>
+          <li>Yu Zhang, Caroline P Riedstra, Sarah Wang, Sonia Patel, Tobias Bald, Pankaj Kumar, Ali Rohani, David F Kashatus, Stergios J Moschos, Andrew C Dudley. Melanoma cells appropriate pericyte: endothelial cell crosstalk during perivascular invasion in the brain. bioRxiv, 2022.</li>
+          <li>Jamie L Null, Dae Joong Kim, James V McCann, Pankaj Kumar, Lincy Edatt, Chad V Pecot, Andrew C Dudley. Periostin+ stromal cells guide lymphovascular invasion by cancer cells. bioRxiv, 2022.</li>
+          <li>Parikh R*, Wilson B*, Marah L, Su Z,  Saha S,  Kumar P, Huang Fenix,  Dutta A. tRForest: a novel random forest-based algorithm for tRNA-derived fragment target prediction. NAR Genomics and Bioinformatics, 2022 Volume 4, Issue 2, June 2022, lqac037.</li>
+          <li>Simpson M, Frisbee A, Kumar P, Schwan C, Aktories K, Petri WA. Clostridioides difficile Binary Toxin Is Recognized by the Toll-Like Receptor 2/6 Heterodimer to Induce a Nuclear Factor-κB Response. J Infect Dis. 2022 Apr 1;225(7):1296-1300. doi: 10.1093/infdis/jiaa620. PubMed PMID: 33011801; PubMed Central PMCID: PMC8974845. Cited 3 times, IF = 5.226, Rank 56 of 162 in IMMUNOLOGY journals.</li>
+          <li>Meneveau MO, Kumar P, Lynch KT, Patel SP, Slingluff CL. The vaccine-site microenvironment: impacts of antigen, adjuvant, and same-site vaccination on antigen presentation and immune signaling. J Immunother Cancer. 2022 Mar;10(3). doi: 10.1136/jitc-2021-003533. PubMed PMID: 35277457; PubMed Central PMCID: PMC8919469. Cited 0 times, IF = 13.751, Rank 8 of 162 in IMMUNOLOGY journals.</li>
+          <li>Uddin MJ, Leslie JL, Burgess SL, Oakland N, Thompson B, Abhyankar M, Revilla J, Frisbee A, Donlan AN, Kumar P, Petri WA Jr. The IL-33-ILC2 pathway protects from amebic colitis. Mucosal Immunol. 2022 Jan;15(1):165-175. doi: 10.1038/s41385-021-00442-2. Epub 2021 Aug 16. PubMed PMID: 34400793; PubMed Central PMCID: PMC8732277. Cited 3 times, IF = 7.313, Rank 30 of 162 in IMMUNOLOGY journals.</li>
+        </ul>
+      <hr class="section-sep px-4"/>
+
+
+        <div>
+          <div class="pub-title collapsed"
+               data-bs-toggle="collapse"
+               data-bs-target="#pankajPubs"
+               aria-expanded="true">
+            Pankaj Kumar’s Selected Publications
+            <i class="fas fa-chevron-down"></i>
+          </div>
+
+          <ul id="pankajPubs" class="pub-list collapse show">
+            <!-- <li>Kumar P., et al. “Advanced Bioinformatics Methods,” <em>Bioinformatics</em>, 2025.</li>
+            <li>Kumar P., et al. “Transcriptome Profiling Techniques,” <em>Journal of Molecular Biology</em>, 2024.</li>
+            <li>Kumar P., et al. “Proteomic Data Mining,” <em>Proteomics</em>, 2023.</li> -->
+            <li>Seegren, P. V., Harper, L. R., Downs, T. K., Zhao, X. -Y., Viswanathan, S. B., Stremska, M. E., . . . Desai, B. N. (2023). Reduced mitochondrial calcium uptake in macrophages is a major driver of inflammaging. NATURE AGING, 3(7), 796-+. doi:<a href="https://www.nature.com/articles/s43587-023-00436-8" target="_blank">10.1038/s43587-023-00436-8</a></li>
+            <li>Null, J. L., Kim, D. J., McCann, V. J., Pramoonjago, P., Fox, J. W., Zeng, J., . . . Dudley, A. C. (2023). Periostin thorn Stromal Cells Guide Lymphovascular Invasion by Cancer Cells. CANCER RESEARCH, 83(13), 2105-2122. doi:<a target="_blank" href="https://aacrjournals.org/cancerres/article/83/13/2105/727430/Periostin-Stromal-Cells-Guide-Lymphovascular">10.1158/0008-5472.CAN-22-2412</a></li>
+            <li>Kim, D. J., Anandh, S., Null, J. L., Przanowski, P., Bhatnagar, S., Kumar, P., . . . Dudley, A. C. (2023). Priming a vascular-selective cytokine response permits CD8+ T-cell entry into tumors. NATURE COMMUNICATIONS, 14(1). doi:<a href="https://www.nature.com/articles/s41467-023-37807-z" target="_blank">10.1038/s41467-023-37807-z</a></li>
+            <li>Parikh, R., Wilson, B., Marrah, L., Su, Z., Saha, S., Kumar, P., . . . Dutta, A. (2022). tRForest: a novel random forest-based algorithm for tRNA-derived fragment target prediction. NAR GENOMICS AND BIOINFORMATICS, 4(2). doi:<a href="https://academic.oup.com/nargab/article/4/2/lqac037/6594978" target="_blank">10.1093/nargab/lqac037</a></li>
+            <li>Meneveau, M. O., Kumar, P., Lynch, K. T., Patel, S. P., & Slingluff, C. L. (2022). The vaccine-site microenvironment: impacts of antigen, adjuvant, and same-site vaccination on antigen presentation and immune signaling. JOURNAL FOR IMMUNOTHERAPY OF CANCER, 10(3). doi:<a href="https://jitc.bmj.com/content/10/3/e003533" target="_blank">10.1136/jitc-2021-003533</a></li>
+            <li>Jan, N., Hays, R. A., Oakland, D. N., Kumar, P., Ramakrishnan, G., Behm, B. W., . . . Marie, C. (2021). Fecal Microbiota Transplantation Increases Colonic IL-25 and Dampens Tissue Inflammation in Patients with Recurrent Clostridioides difficile. MSPHERE, 6(5). doi:<a href="https://journals.asm.org/doi/10.1128/msphere.00669-21" target="_blank">10.1128/mSphere.00669-21</a></li>
+            <li>Eki, R., She, J., Parlak, M., Benamar, M., Du, K. -P., Kumar, P., & Abbas, T. (2020). A robust CRISPR-Cas9-based fluorescent reporter assay for the detection and quantification of DNA double-strand break repair. NUCLEIC ACIDS RESEARCH, 48(21). doi:<a href="https://academic.oup.com/nar/article/48/21/e126/5929239" target="_blank">10.1093/nar/gkaa897</a></li>
+            <li>Simpson, M., Frisbee, A., Kumar, P., Schwan, C., Aktories, K., & Petri, W. A. J. (2022). Clostridioides difficile Binary Toxin Is Recognized by the Toll-Like Receptor 2/6 Heterodimer to Induce a Nuclear Factor-κB Response. JOURNAL OF INFECTIOUS DISEASES, 225(7), 1296-1300. doi:<a href="https://academic.oup.com/jid/article/225/7/1296/5917760" target="_blank">10.1093/infdis/jiaa620</a></li>
+            <li>Su, Z., Wilson, B., Kumar, P., & Dutta, A. (2020). Noncanonical Roles of tRNAs: tRNA Fragments and Beyond. ANNUAL REVIEW OF GENETICS, VOL 54, 2020, 54, 47-69. doi:<a href="https://www.annualreviews.org/content/journals/10.1146/annurev-genet-022620-101840" target="_blank">10.1146/annurev-genet-022620-101840</a></li>
+            <li>Kumar, P., Kiran, S., Saha, S., Su, Z., Paulsen, T., Chatrath, A., . . . Dutta, A. (2020). ATAC-seq identifies thousands of extrachromosomal circular DNA in cancer and cell lines. SCIENCE ADVANCES, 6(20) doi:<a href="https://www.science.org/doi/10.1126/sciadv.aba2489" target="_blank">10.1126/sciadv.aba2489</a></li>
+            <li>Pollack, K. E., Meneveau, M. O., Melssen, M. M., Lynch, K. T., Koeppel, A. F., Young, S. J., . . . Slingluff, C. L. J. (2020). Incomplete Freund's adjuvant reduces arginase and enhances Th1 dominance, TLR signaling and CD40 ligand expression in the vaccine site microenvironment. JOURNAL FOR IMMUNOTHERAPY OF CANCER, 8(1). doi:<a href="https://jitc.bmj.com/content/8/1/e000544" target="_blank">10.1136/jitc-2020-000544</a></li>
+            <li>Chatrath, A., Przanowska, R., Kiran, S., Su, Z., Saha, S., Wilson, B., . . . Dutta, A. (2020). The pan-cancer landscape of prognostic germline variants in 10,582 patients. GENOME MEDICINE, 12(1). doi:<a href="https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-020-0718-7" target="_blank">10.1186/s13073-020-0718-7</a></li>
+            <li>Paulsen, T., Shibata, Y., Kumar, P., Dillon, L., & Dutta, A. (2019). Small extrachromosomal circular DNAs, microDNA, produce short regulatory RNAs that suppress gene expression independent of canonical promoters. NUCLEIC ACIDS RESEARCH, 47(9), 4586-4596. doi:<a href="https://academic.oup.com/nar/article/47/9/4586/5369011" target="_blank">10.1093/nar/gkz155</a></li>
+            <li>Chatrath, A., Kiran, M., Kumar, P., Ratan, A., & Dutta, A. (2019). The Germline Variants rs61757955 and rs34988193 Are Predictive of Survival in Lower Grade Glioma Patients. MOLECULAR CANCER RESEARCH, 17(5), 1075-1086. doi:<a href="https://aacrjournals.org/mcr/article/17/5/1075/89990/The-Germline-Variants-rs61757955-and-rs34988193" target="_blank">10.1158/1541-7786.MCR-18-0996</a></li>
+            <li>Kuscu, C., Kumar, P., Kiran, M., Su, Z., Malik, A., & Dutta, A. (2018). tRNA fragments (tRFs) guide Ago to regulate gene expression post-transcriptionally in a Dicer-independent manner. RNA, 24(8), 1093-1105. doi:<a href="https://rnajournal.cshlp.org/content/24/8/1093" target="_blank">10.1261/rna.066126.118</a></li>
+            <li>Paulsen, T., Kumar, P., Koseoglu, M. M., & Dutta, A. (2018). Discoveries of Extrachromosomal Circles of DNA in Normal and Tumor Cells. TRENDS IN GENETICS, 34(4), 270-278. doi:<a href="https://www.sciencedirect.com/science/article/pii/S0168952517302305" target="_blank">10.1016/j.tig.2017.12.010</a></li>
+            <li>Kumar, P., Dillon, L. W., Shibata, Y., Jazaeri, A. A., Jones, D. R., & Dutta, A. (2017). Normal and Cancerous Tissues Release Extrachromosomal Circular DNA (eccDNA) into the Circulation. MOLECULAR CANCER RESEARCH, 15(9), 1197-1205. doi:<a href="https://aacrjournals.org/mcr/article/15/9/1197/268041/Normal-and-Cancerous-Tissues-Release" target="_blank">10.1158/1541-7786.MCR-17-0095</a></li>
+            <li>Kumar, P., Kuscu, C., & Dutta, A. (2016). Biogenesis and Function of Transfer RNA-Related Fragments (tRFs). TRENDS IN BIOCHEMICAL SCIENCES, 41(8), 679-689. doi:<a href="https://www.sciencedirect.com/science/article/pii/S0968000416300329" target="_blank">10.1016/j.tibs.2016.05.004</a></li>
+            <li>Dillon, L. W., Kumar, P., Shibata, Y., Wang, Y. -H., Willcox, S., Griffith, J. D., . . . Dutta, A. (2015). Production of Extrachromosomal MicroDNAs Is Linked to Mismatch Repair Pathways and Transcriptional Activity. CELL REPORTS, 11(11), 1749-1759. doi:<a href="https://www.sciencedirect.com/science/article/pii/S221112471500546X" target="_blank">10.1016/j.celrep.2015.05.020</a></li>
+            <li>Kumar, P., Anaya, J., Mudunuri, S. B., & Dutta, A. (2014). Meta-analysis of tRNA derived RNA fragments reveals that they are evolutionarily conserved and associate with AGO proteins to recognize specific RNA targets. BMC BIOLOGY, 12. doi:<a href="https://bmcbiol.biomedcentral.com/articles/10.1186/s12915-014-0078-0" target="_blank">10.1186/s12915-014-0078-0</a></li>
+            <li>Im, J. -S., Keaton, M., Lee, K. Y., Kumar, P., Park, J., & Dutta, A. (2014). ATR checkpoint kinase and CRL1βTRCP collaborate to degrade ASF1a and thus repress genes overlapping with clusters of stalled replication forks. GENES & DEVELOPMENT, 28(8), 875-887. doi:<a href="https://genesdev.cshlp.org/content/28/8/875">10.1101/gad.239194.114</a></li>
+            <li>Shibata, Y., Kumar, P., Layer, R., Willcox, S., Gagan, J. R., Griffith, J. D., & Dutta, A. (2012). Extrachromosomal MicroDNAs and Chromosomal Microdeletions in Normal Tissues. SCIENCE, 336(6077), 82-86. doi:<a href="https://www.science.org/doi/10.1126/science.1213307" target="_blank">10.1126/science.1213307</a></li>
+            <li>Kumar, P., Chaitanya, P. S., & Nagarajaram, H. A. (2011). PSSRdb: a relational database of polymorphic simple sequence repeats extracted from prokaryotic genomes. NUCLEIC ACIDS RESEARCH, 39, D601-D605. doi: <a href="https://academic.oup.com/nar/article/39/suppl_1/D601/2507627" target="_blank">10.1093/nar/gkq1198</a></li>
+            <li>Mudunuri, S. B., Kumar, P., Rao, A. A., Sanaboina, P. S., & Nagarajaram, H. A. (2010). G-IMEx: A comprehensive software tool for detection of microsatellites from genome sequences. BIOINFORMATION, 5(5), 221-223. doi:<a href="https://www.bioinformation.net/005/004800052010.pdf" target="_blank">10.6026/97320630005221</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const pubTitle = document.querySelector('.pub-title');
+    const collapseEl = document.getElementById('pankajPubs');
+    collapseEl.addEventListener('show.bs.collapse', () => pubTitle.classList.remove('collapsed'));
+    collapseEl.addEventListener('hide.bs.collapse', () => pubTitle.classList.add('collapsed'));
+  </script>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Pankaj Kumar-lab Services</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary-color: rgba(38,34,98,1);
+      --nav-bg: #e6f0ff;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f0f8ff;
+      color: #333;
+    }
+
+    .card { border: none; }
+
+    .navbar {
+      background: var(--nav-bg);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .brand-text {
+      color: var(--primary-color);
+      font-weight: 600;
+      font-size: clamp(1rem,4vw,1.75rem);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .vertical-divider {
+      width: 1px;
+      background: var(--primary-color);
+      height: clamp(25px,3vw,40px);
+      margin: 0 .75rem;
+      flex-shrink: 0;
+    }
+    .navbar-brand-logo {
+      height: clamp(30px,6vw,50px);
+      flex-shrink: 0;
+    }
+    .nav-link {
+      color: #333 !important;
+      font-weight: 400 !important;
+    }
+    .nav-link.active {
+      color: var(--primary-color) !important;
+      border-bottom: 2px solid var(--primary-color);
+    }
+
+    .page-title {
+      color: var(--primary-color);
+      text-align: left;
+      margin: 1.5rem 0;
+    }
+
+    .accordion-item {
+      border: none;
+      border-left: 4px solid transparent;
+      border-radius: .5rem;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      transition: border-color .3s;
+    }
+    .accordion-item.active {
+      border-left-color: var(--primary-color);
+    }
+    .accordion-button {
+      position: relative;
+      padding-left: 2.5rem;
+      background-color: rgba(38,34,98,0.1);
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    .accordion-button::after {
+      display: none;
+    }
+    .accordion-button::before {
+      content: "\f078"; 
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.75rem;
+      color: var(--primary-color);
+      transition: transform .3s;
+    }
+    .accordion-button:not(.collapsed) {
+      background-color: rgba(38,34,98,0.2);
+    }
+    .accordion-button:not(.collapsed)::before {
+      content: "\f077"; 
+    }
+    .accordion-body {
+      background: #fff;
+      color: #333;
+    }
+    .service-number {
+      margin-right: .5rem;
+      color: var(--primary-color);
+    }
+    @media (min-width: 992px) {
+  /* space between links */
+  #mainNavbar .navbar-nav { gap: .25rem; }
+
+  /* pipe separator after each link except the last */
+  #mainNavbar .nav-item:not(:last-child) .nav-link {
+    position: relative;
+    padding-right: 1rem;   /* room for the pipe */
+    margin-right: .5rem;
+  }
+  #mainNavbar .nav-item:not(:last-child) .nav-link::after {
+    content: "|";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: .4;           /* soften the pipe */
+    pointer-events: none;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <div class="container my-5">
+    <div class="card shadow-sm rounded">
+
+      <nav class="navbar navbar-expand-md">
+        <div class="container-fluid">
+          <div class="d-flex align-items-center">
+            <span class="brand-text">Bioinformatics Core</span>
+            <div class="vertical-divider"></div>
+            <img src="public/uva_primary_rgb.png" alt="UVA Logo" class="navbar-brand-logo"/>
+          </div>
+          <button class="navbar-toggler" type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#mainNavbar"
+                  aria-controls="mainNavbar"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+            <ul class="navbar-nav flex-nowrap">
+              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+              <!-- <li class="nav-item"><a class="nav-link" href="about.html">About</a></li> -->
+              <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+              <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
+              <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <h2 class="page-title px-4">Services</h2>
+
+      <div class="card-body px-4 py-3">
+        <div class="accordion" id="servicesAccordion"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const services = [
+      {
+        service_name: 'Custom bioinformatics / biostatistical support',
+        service_description:
+          'Any type of genomic, transcriptomic, epigenomic, and proteomic data analysis that is tailored towards the project\'s aim.'
+      },
+      {
+        service_name: 'Proteomics Data Analysis',
+        service_description:
+        'Identifying proteins and quantifying their abundances followed by differential protein and gene expression and pathway analyses.'
+      },
+      {
+        service_name: 'Gene expression profiling (Bulk): RNA-seq and microarray',
+        service_description:
+          'Raw data QC, adaptor contamination removal (if any), reads mapping to whole genome and transcriptome, transcriptome profiling, differential gene expression analysis, and pathway analysis.'
+      },
+      {
+        service_name: 'Small RNA-seq data analysis',
+        service_description:
+          'Raw data QC, adaptor contamination removal (if any), reads mapping to small RNA (microRNA, tRNA, etc.), transcriptome profiling, differential gene expression analysis, and pathway analysis.'
+      },
+      
+      {
+        service_name: 'Allele-specific gene expression analysis',
+        service_description:
+          'The raw reads are mapped to the genome and transcriptome, and the gene expression profiles are extracted on an allele-specific basis.'
+      },
+      {
+        service_name: 'Single Cell RNA-seq (scRNA-seq) (expression profiling, cluster generation, cluster annotation, Marker gene identification, pseudotime trajectory analysis (PHATE, Monocle etc.), pathway analysis, etc.)',
+        service_description:
+          'Performing pre-alignment data quality control, mapping reads to the genome and transcriptome, post-alignment data quality control, removing ambient nucleic acid contamination, conducting standard QC and clustering, identifying marker genes, annotating clusters, conducting pathway analysis, and performing trajectory analysis, among other tasks.'
+      },
+      {
+        service_name: 'Single Cell ATAC-seq (scATAC-seq) data analysis',
+        service_description:
+          'Pre-alignment data quality control, mapping reads to the genome and transcriptome, post-alignment data quality control, ambient nucleic acid contamination removal, standard QC and clustering, marker gene identification, cluster annotation, pathway analysis, trajectory analysis, and other related analyses.'
+      },
+      {
+        service_name: 'Integrated scRNA-seq and scATAC-seq data analysis',
+        service_description:
+          'Pre-alignment data quality control, mapping reads to the genome and transcriptome, post-alignment data quality control, ambient nucleic acid contamination removal, standard QC and clustering, marker gene identification, cluster annotation, pathway analysis, trajectory analysis, and other related analyses.'
+      },
+      {
+        service_name: 'Single Cell Spatial genomics data analysis (CosMx (Nanostring/Bruker), CytAssist – Visium V2 and HD (10x Genomics) etc.)',
+        service_description:
+          'Data quality control, aligning reads to the genome, transcriptome, and image file, and re-aligning the image (if require). All standard analyses performed for single-cell RNA-seq are included. Additionally, cells are mapped back to the image to determine their origin, and neighborhood analysis is also conducted.'
+      },
+      {
+        service_name: 'DNA variation (variant calling and annotation (SNP) and GWAS)',
+        service_description:
+          'Raw data quality check, aligning sequencing reads against a reference genome, identifying and annotating variants, calculating allele frequencies (both within the sample and relative to public databases like gnomAD), and predicting deleterious and benign mutations.'
+      },
+      {
+        service_name: 'Copy number variation (Aneuploidy, insertion/deletion etc.)',
+        service_description:
+          'Paired-end raw data quality check, aligning sequencing reads against a reference genome, and identifying insertions, deletions, and duplications in the sequenced genome compared to the reference genome.'
+      },
+      {
+        service_name: 'Genome-wide quantification of DNA double-strand break',
+        service_description:
+          'Paired-end reads are mapped to the reference genome, and genomic coordinates of double-strand breaks (DSBs) are identified based on the mapping patterns.'
+      },
+      {
+        service_name: 'DNA protein binding (ChIP-seq, CHIRP-seq, etc.)',
+        service_description:
+          'Raw reads are mapped, and peaks are called based on these mapped reads. Blacklisted peaks are removed to identify the true binding sites.'
+      },
+      {
+       service_name:'RNA binding (CLIP-seq, PAR-CLIP, CLASH, etc.)',
+       service_description:'In this case, raw reads are mapped to genomic and transcriptomic regions. Clusters of mapped reads are identified, mismatch base frequencies are calculated, and a threshold is set to determine true RNA binding sites. For CLASH data analysis, reads are mapped to two non-contiguous regions in the genome.' 
+      },
+      {
+       service_name:'ATAC-seq data analysis',
+       service_description:'Active or open chromatin regions in the genome are identified, transcription factor binding sites are identified.' 
+      },
+      {
+       service_name:'CUT&RUN data analysis',
+       service_description:'Active or open chromatin regions in the genome are identified. This process is similar to ChIP-seq, but does not require an antibody against the specific binding region of interest.' 
+      },
+      {
+       service_name:'DNA methylation: sequence-based analysis and array-based analysis',
+       service_description:'Quantitative identification and profiling of DNA methylation across the entire genome.' 
+      },
+      {
+       service_name:'Microbiome data analysis (16S rRNA, shotgun metagenomics, etc.)',
+       service_description:'Reads are cleaned, low-quality reads are trimmed, and then mapped to bacterial/archaeal 16S reference databases. After mapping, microorganisms are quantified. For metagenomics, reads are mapped to a reference dataset, where clade-specific regions are used to create the reference database.' 
+      },
+      {
+       service_name:'Metabolomics data analysis (Targeted & Untargeted)',
+       service_description:'Metabolites are identified and quantified, followed by differential abundance analysis.' 
+      },
+      {
+       service_name:'Pathway and functional analysis',
+       service_description:'The input for this analysis can be a list of genes or specific chromosomal regions. The analysis is conducted using various reference databases.' 
+      },
+      {
+       service_name:'Survival analysis (with TCGA sequencing and clinical data)',
+       service_description:'Survival analysis utilizes gene expression data, mutation information, clinical details, and patient status.' 
+      },
+      {
+       service_name:'CRISPR screening experimental design and data analysis',
+       service_description:'The goal is to identify genes that confer an advantage or disadvantage in a given selection process. In this case, raw reads are quality checked, adaptor contaminations are removed, and the clean reads are mapped to the reference CRISPR libraries. Downstream analysis is performed using program like MAGEK.' 
+      },
+      {
+       service_name:'Power Analysis (Estimation of sample size)',
+       service_description:'This is a crucial analysis that should be conducted before setting up the experiment to ensure we have sufficient statistical power to support or refute the hypothesis.' 
+      },
+      {
+       service_name:'Grant and manuscript support',
+       service_description:'In this case, we assist with the bioinformatics components of grant writing and manuscript preparation.' 
+      }
+
+    ];
+
+    const acc = document.getElementById('servicesAccordion');
+    services.forEach((svc,i) => {
+      const item = document.createElement('div');
+      item.className = 'accordion-item';
+      item.innerHTML = `
+        <h2 class="accordion-header" id="heading${i}">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapse${i}"
+            aria-expanded="false"
+            aria-controls="collapse${i}"
+          >
+            <span class="service-number">${i+1}.</span>${svc.service_name}
+          </button>
+        </h2>
+        <div
+          id="collapse${i}"
+          class="accordion-collapse collapse"
+          aria-labelledby="heading${i}"
+        >
+          <div class="accordion-body">
+            ${svc.service_description}
+          </div>
+        </div>
+      `;
+      acc.appendChild(item);
+
+      const collapseEl = item.querySelector('.accordion-collapse');
+      collapseEl.addEventListener('show.bs.collapse', () => item.classList.add('active'));
+      collapseEl.addEventListener('hide.bs.collapse', () => item.classList.remove('active'));
+    });
+  </script>
+</body>
+</html>
