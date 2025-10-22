@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pankaj-kumar-lab.github.io/webpage/sitemap.xml
