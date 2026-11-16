@@ -92,24 +92,67 @@
       margin: 1rem 0;
     }
     .research-figure {
-      margin: 1.5rem auto;
-      max-width: 640px;
-      text-align: center;
+      margin: 0 auto;
+      max-width: 620px;   /* keeps the heatmap compact on tablets / when stacked */
     }
-    .research-figure img {
+    .figure-zoom {
+      position: relative;
+      display: block;
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid rgba(38,34,98,0.12);
+      border-radius: 0.75rem;
+      background: #fff;
+      box-shadow: 0 1px 2px rgba(38,34,98,0.06), 0 8px 24px -12px rgba(38,34,98,0.25);
+      cursor: zoom-in;
+      transition: box-shadow .25s ease, transform .25s ease;
+    }
+    .figure-zoom:hover {
+      box-shadow: 0 2px 4px rgba(38,34,98,0.08), 0 16px 36px -14px rgba(38,34,98,0.35);
+      transform: translateY(-2px);
+    }
+    .figure-zoom:focus-visible {
+      outline: 3px solid var(--primary-color);
+      outline-offset: 3px;
+    }
+    .figure-zoom img {
+      display: block;
       width: 100%;
       height: auto;
-      border-radius: 0.25rem;
+      border-radius: 0.4rem;
     }
+    .zoom-hint {
+      position: absolute;
+      right: 1.25rem;
+      bottom: 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.65rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fff;
+      background: rgba(38,34,98,0.85);
+      border-radius: 999px;
+      opacity: 0;
+      transition: opacity .2s ease;
+      pointer-events: none;
+    }
+    .figure-zoom:hover .zoom-hint,
+    .figure-zoom:focus-visible .zoom-hint { opacity: 1; }
+    @media (hover: none) { .zoom-hint { opacity: 1; } }
     .research-figure figcaption {
       margin-top: 0.75rem;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
       color: #555;
-      text-align: left;
       border-left: 4px solid var(--primary-color);
-      background-color: rgba(38,34,98,0.05);
-      padding: 0.6rem 0.9rem;
-      border-radius: 0.25rem;
+      padding: 0.1rem 0 0.1rem 0.8rem;
+    }
+    #heatmapModal .modal-content { border: none; border-radius: 0.75rem; }
+    @media (prefers-reduced-motion: reduce) {
+      .figure-zoom, .zoom-hint { transition: none; }
+      .figure-zoom:hover { transform: none; }
     }
     .pub-heading {
       color: var(--primary-color);
@@ -298,20 +341,33 @@
             </p>
 
             <h5 class="project-sub">Integrating Polygenic Risk Scores and Clinical Factors for Breast Cancer Risk Prediction</h5>
-            <p>
-                We investigate how inherited genetic susceptibility, measured using polygenic risk scores (PRS), contributes to breast cancer risk beyond established clinical and demographic factors. By integrating whole-genome sequencing data with longitudinal electronic health records and social determinants of health, we evaluate the predictive performance of ancestry-informed PRS models across genetically diverse populations.
-            </p>
-            <p>
-                Our research also examines interactions between genetic susceptibility and clinical risk factors and explores individualized five-year breast cancer risk estimation. This work aims to improve risk stratification and provide a foundation for more personalized breast cancer screening and prevention strategies.
-            </p>
-            <figure class="research-figure">
-                <img src="public/heatmap_model_M.png"
-                     alt="Heatmap of 5-year predicted breast cancer risk by META PRS quartile (Q1 to Q4) and age group (under 40 to 75 and over). Risk rises with both age and PRS quartile, from 0.4% in the youngest, lowest-PRS group to 8.7% in the oldest, highest-PRS group."
-                     loading="lazy"/>
-                <figcaption>
-                    <strong>5-year incident breast cancer risk:</strong> individualized five-year risk estimated by combining polygenic risk scores derived with PRS-CSx and age (All of Us participants, N = 137,586; cases = 2,464).
-                </figcaption>
-            </figure>
+            <div class="row g-4 align-items-center">
+              <div class="col-lg-6">
+                <p>
+                    We investigate how inherited genetic susceptibility, measured using polygenic risk scores (PRS), contributes to breast cancer risk beyond established clinical and demographic factors. By integrating whole-genome sequencing data with longitudinal electronic health records and social determinants of health, we evaluate the predictive performance of ancestry-informed PRS models across genetically diverse populations.
+                </p>
+                <p class="mb-0">
+                    Our research also examines interactions between genetic susceptibility and clinical risk factors and explores individualized five-year breast cancer risk estimation. This work aims to improve risk stratification and provide a foundation for more personalized breast cancer screening and prevention strategies.
+                </p>
+              </div>
+              <div class="col-lg-6">
+                <figure class="research-figure">
+                  <button type="button" class="figure-zoom" data-bs-toggle="modal" data-bs-target="#heatmapModal" aria-label="Enlarge heatmap">
+                    <img src="public/heatmap_model_M.png"
+                         width="1845" height="1495"
+                         alt="Heatmap of 5-year predicted breast cancer risk by META PRS quartile (Q1 to Q4) and age group (under 40 to 75 and over). Risk rises with both age and PRS quartile, from 0.4% in the youngest, lowest-PRS group to 8.7% in the oldest, highest-PRS group."
+                         loading="lazy" decoding="async"/>
+                    <span class="zoom-hint" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>
+                      Click to enlarge
+                    </span>
+                  </button>
+                  <figcaption>
+                    <strong>5-year incident breast cancer risk.</strong> Individualized five-year risk estimated by combining polygenic risk scores derived with PRS-CSx and age group using All of Us Cohorts.
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
 
             <h5 class="project-sub">Drug Repurposing and Genomics-Informed Breast Cancer Prevention</h5>
             <p>
@@ -323,6 +379,21 @@
             <p>
                 This research aims to establish a framework for genomics-informed drug repurposing and generate evidence to guide future studies of personalized cancer prevention.
             </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full-size heatmap viewer -->
+  <div class="modal fade" id="heatmapModal" tabindex="-1" aria-labelledby="heatmapModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="heatmapModalLabel" style="color:var(--primary-color)">5-year breast cancer risk by META PRS and age</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="public/heatmap_model_M.png" class="img-fluid" alt="Enlarged heatmap of 5-year predicted breast cancer risk by PRS quartile and age group." loading="lazy"/>
+        </div>
       </div>
     </div>
   </div>
