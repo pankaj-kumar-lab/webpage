@@ -147,7 +147,8 @@
       line-height: 1.5;
       color: #555;
     }
-    #heatmapModal .modal-content { border: none; border-radius: 0.75rem; }
+    #figureModal .modal-content { border: none; border-radius: 0.75rem; }
+    #figureModalImg { max-height: 80vh; width: auto; }
     @media (prefers-reduced-motion: reduce) {
       .zoom-hint { transition: none; }
     }
@@ -346,7 +347,7 @@
             </p>
 
             <figure class="research-figure">
-              <button type="button" class="figure-zoom" data-bs-toggle="modal" data-bs-target="#heatmapModal" aria-label="Enlarge heatmap">
+              <button type="button" class="figure-zoom" data-bs-toggle="modal" data-bs-target="#figureModal" data-full="public/heatmap_model_M.png" data-title="5-year breast cancer risk by META PRS and age" aria-label="Enlarge heatmap">
                 <img src="public/heatmap_model_M.png"
                      alt="Heatmap of 5-year predicted breast cancer risk by META PRS quartile (Q1 to Q4) and age group (under 40 to 75 and over). Risk rises with both age and PRS quartile, from 0.4% in the youngest, lowest-PRS group to 8.7% in the oldest, highest-PRS group."
                      loading="lazy" decoding="async"/>
@@ -370,25 +371,49 @@
             <p>
                 This research aims to establish a framework for genomics-informed drug repurposing and generate evidence to guide future studies of personalized cancer prevention.
             </p>
+
+            <figure class="research-figure">
+              <button type="button" class="figure-zoom" data-bs-toggle="modal" data-bs-target="#figureModal" data-full="public/love_plot_overlap_iptw.png" data-title="Covariate balance: overlap weighting vs IPTW" aria-label="Enlarge covariate balance plot">
+                <img src="public/love_plot_overlap_iptw.png"
+                     alt="Love plot of absolute standardized mean differences for 29 covariates. Before weighting, many covariates exceed 0.10, up to about 0.69 for index year 2022 or later. After overlap weighting all covariates are near zero, and after stabilized IPTW all are below 0.10."
+                     loading="lazy" decoding="async"/>
+                <span class="zoom-hint" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>
+                  Click to enlarge
+                </span>
+              </button>
+              <figcaption>
+                <strong>Covariate balance before and after weighting.</strong> Absolute standardized mean differences for each covariate before weighting, after overlap weighting, and after stabilized inverse probability of treatment weighting (IPTW). Values below 0.10 (shaded) indicate adequate balance.
+              </figcaption>
+            </figure>
       </div>
     </div>
   </div>
 
-  <!-- Full-size heatmap viewer -->
-  <div class="modal fade" id="heatmapModal" tabindex="-1" aria-labelledby="heatmapModalLabel" aria-hidden="true">
+  <!-- Full-size figure viewer (shared by all figures) -->
+  <div class="modal fade" id="figureModal" tabindex="-1" aria-labelledby="figureModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="heatmapModalLabel" style="color:var(--primary-color)">5-year breast cancer risk by META PRS and age</h5>
+          <h5 class="modal-title" id="figureModalLabel" style="color:var(--primary-color)"></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body text-center">
-          <img src="public/heatmap_model_M.png" class="img-fluid" alt="Enlarged heatmap of 5-year predicted breast cancer risk by PRS quartile and age group." loading="lazy"/>
+          <img id="figureModalImg" src="" class="img-fluid" alt=""/>
         </div>
       </div>
     </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('figureModal').addEventListener('show.bs.modal', e => {
+      const btn = e.relatedTarget;
+      const img = document.getElementById('figureModalImg');
+      img.src = btn.dataset.full;
+      img.alt = btn.querySelector('img').alt;
+      document.getElementById('figureModalLabel').textContent = btn.dataset.title;
+    });
+  </script>
 </body>
 </html>
